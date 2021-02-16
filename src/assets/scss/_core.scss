@@ -1,0 +1,9 @@
+@import "normalize.css/normalize";
+
+$screen-sm-min: 800px;
+
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}

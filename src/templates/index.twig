@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&display=swap" rel="stylesheet">
+  <link href="./css/styles.css?cb=" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col w-full sm-w-1-2 sm-pl-0">
+      {% for alias, product in products %}
+        <div class="picture picture-animate js-picture {{ loop.index == '1' ? 'is-active' : '' }}" data-picture="{{ alias }}">
+          <img width="374" height="227" class="picture-mobile" src="{{ product.img.mobile }}">
+          <img width="960" height="470" class="picture-desktop" src="{{ product.img.desktop }}">
+        </div>
+      {% endfor %}
+    </div>
+    <div class="col w-full sm-w-1-2 sm-pr-0">
+      <div class="text-holder flex items-center">
+        {% for alias, product in products %}
+          <span class="text text-animate js-text {{ loop.index == '1' ? 'is-active' : '' }}" data-text="{{ alias }}">{{ product.text }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="names-holder">
+    {% for alias, product in products %}
+      <div class="name {{ loop.index == '1' ? 'is-active' : '' }} js-switch" data-num="{{ loop.index }}" data-tab-switch="{{ alias }}">
+        <span class="name-mobile">{{ product.name.mobile }}</span>
+        <span class="name-desktop">{{ product.name.desktop }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<script src="./js/main.js?cb="></script>
+</body>
+</html>

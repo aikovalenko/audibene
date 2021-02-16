@@ -1,0 +1,172 @@
+@import "../scss/_core.scss";
+@import "../scss/_utils.scss";
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.picture {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: calc((227 / 374) * 100%);
+
+  @include sm {
+    padding-bottom: 0;
+  }
+}
+
+.picture-mobile {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.picture-mobile,
+.name-mobile {
+  @include sm {
+    display: none;
+  }
+}
+
+.picture-desktop,
+.name-desktop {
+  display: none;
+  @include sm {
+    display: block;
+  }
+}
+
+.picture-desktop {
+  height: auto;
+}
+
+.text-holder {
+  position: relative;
+  padding: 35px 30px;
+  font-size: 32px;
+  line-height: 40px;
+  background-color: rgba(27, 37, 63, 1);
+  color: rgba(255, 255, 255, 1);
+
+  @include sm {
+    height: 100%;
+    font-size: 28px;
+    padding: 0 82px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 12px;
+      height: 140px;
+      background-color: rgba(122, 175, 221, 1);
+    }
+  }
+}
+
+.names-holder {
+  display: flex;
+
+  @include sm {
+    justify-content: center;
+    padding-top: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.name {
+  width: 25%;
+  margin: 0 1px;
+  padding: 42px 5px;
+  font-size: 18px;
+  text-align: center;
+  background-color: rgba(204, 204, 204, 1);
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  transition: all .4s ease;
+
+  @include sm {
+    max-width: 230px;
+    margin: 0 10px;
+    padding: 32px 5px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(150, 150, 160, 1);
+    border: 1px solid rgba(27, 37, 63, 1);
+  }
+
+  &.is-active {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(150, 150, 160, 1);
+
+    @include sm {
+      background-color: rgba(27, 37, 63, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.picture,
+.text {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.text-animate {
+  animation: fadeInRight .4s ease-out;
+}
+.picture-animate {
+  //animation: fadeIn .4s ease-out;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

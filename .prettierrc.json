@@ -1,0 +1,15 @@
+{
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html", "**/*.twig"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "arrowParens": "avoid"
+}

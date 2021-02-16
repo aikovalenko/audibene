@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @include sm {
+    padding: 0 10px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  @include sm {
+    margin: 0 -10px;
+  }
+}
+
+.col {
+  @include sm {
+    padding: 0 10px;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.sm-w-1-2 {
+  @include sm {
+    width: 50%;
+  }
+}
+
+.sm-pl-0 {
+  @include sm {
+    padding-left: 0;
+  }
+}
+
+.sm-pr-0 {
+  @include sm {
+    padding-right: 0;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
