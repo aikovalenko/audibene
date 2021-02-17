@@ -86,6 +86,8 @@ img {
 
 .names-holder {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @include sm {
     justify-content: center;
