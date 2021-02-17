@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "install": "npm i",
     "production": "NODE_ENV=production gulp build",
-    "dev": "gulp build && gulp watch",
+    "developing": "gulp build && gulp watch",
     "fetch": "gulp fetch"
   },
   "author": "",
