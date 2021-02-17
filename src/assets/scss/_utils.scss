@@ -50,6 +50,8 @@
 
 .items-center {
   align-items: center;
+  -ms-flex: 1 0;
+  flex-grow: 1;
 }
 
 .hidden {
