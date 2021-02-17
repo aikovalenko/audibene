@@ -1,4 +1,5 @@
 const { series, parallel, src, dest, watch } = require('gulp')
+const googleWebFonts = require('gulp-google-webfonts')
 const rename = require('gulp-rename')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
@@ -22,24 +23,36 @@ const paths = {
   dist: {
     html: `docs/`,
     js: `docs/js/`,
-    css: `docs/css/`
+    css: `docs/css/`,
+    fonts: `docs/css/fonts/`
   },
   src: {
     twig: `src/templates/*.twig`,
     data: 'src/data/',
     js: `src/assets/js/**`,
-    css: `src/assets/scss/main.scss`
+    css: `src/assets/scss/main.scss`,
+    fonts: `src/assets/fonts/**/*.*`
   },
   watch: {
     twig: `src/templates/*.twig`,
     data: 'src/data/*.twig.json',
     js: `src/assets/js/**/*.js`,
-    css: `src/assets/scss/**/*.scss`
+    css: `src/assets/scss/**/*.scss`,
+    fonts: `src/assets/fonts/**/*.*`
   },
   clean: `docs/`
 }
+const fetchFonts = () => {
+  return src('./fonts.list')
+    .pipe(googleWebFonts({
+        fontsDir: 'fonts/',
+        cssDir: 'scss/',
+        cssFilename: '_fonts.scss'
+    }))
+    .pipe(dest('src/assets'))
+}
 
-const fetchData = (cb) => {
+const fetchApi = (cb) => {
   let url = 'https://api.jsonbin.io/b/6023a4c93b303d3d964e8ddf'
 
   fetch(url, { method: 'Get' })
@@ -109,13 +122,19 @@ const twigTpl = () => {
     .pipe(dest(paths.dist.html))
 }
 
+const fonts = () => {
+  return src(paths.src.fonts).pipe(dest(paths.dist.fonts))
+}
+
 const watcher = () => {
   watch(paths.watch.css, series(styles))
   watch(paths.watch.js, series(scripts, reload))
+  watch(paths.watch.fonts, series(fonts, reload))
   watch([paths.watch.twig, paths.watch.data], series(twigTpl, reload))
 }
 
-exports.fetch = fetchData
+exports.fetchFonts = fetchFonts
+exports.fetchApi = fetchApi
 exports.watch = series(serve, watcher)
-exports.build = series(clean, parallel(styles, scripts, twigTpl))
-exports.default = series(clean, parallel(styles, scripts, twigTpl))
+exports.build = series(clean, parallel(styles, scripts, twigTpl, fonts))
+exports.default = series(clean, parallel(styles, scripts, twigTpl, fonts))
