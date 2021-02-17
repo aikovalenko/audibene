@@ -21,7 +21,7 @@
       {% endfor %}
     </div>
     <div class="col w-full sm-w-1-2 sm-pr-0">
-      <div class="text-holder flex items-center">
+      <div class="text-holder items-center">
         {% for alias, product in products %}
           <span class="text text-animate js-text {{ loop.index == '1' ? 'is-active' : '' }}" data-text="{{ alias }}">{{ product.text }}</span>
         {% endfor %}

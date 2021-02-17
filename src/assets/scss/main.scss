@@ -59,6 +59,9 @@ img {
 }
 
 .text-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   padding: 35px 30px;
   font-size: 32px;
@@ -86,8 +89,6 @@ img {
 
 .names-holder {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   @include sm {
     justify-content: center;
